@@ -54,6 +54,26 @@ Start the Client
   npm start
 ```
 
+```bash
+
+   // send conversation
+  "POST /api/v1/conversations/": "sendConversation",
+
+  // Fetch chats
+  "GET /api/v1/conversations/:conversationId": "getConversation",
+
+```
+
+```bash
+
+   // send messages
+  "POST /api/v1/messages/": "sendMessage",
+
+  // Fetch mwssages
+  "GET /api/v1/messages/:messageId": "getMessage",
+
+```      
+
 # Features
 
 ### Authenticaton
