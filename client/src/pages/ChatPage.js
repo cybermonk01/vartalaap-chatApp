@@ -98,8 +98,8 @@ const Chatpage = () => {
   }, [messages]);
 
   return (
-    <div className="flex h-screen">
-      <div className="w-1/3 border-r">
+    <div className="flex h-screen ">
+      <div className="w-1/3 border-r bg-blue-50">
         <div className="bg-gray-200 p-4">
           <input
             type="text"

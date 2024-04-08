@@ -22,7 +22,7 @@ const Conversations = ({ conversation, currentUser }) => {
   }, [conversation, currentUser]);
 
   return (
-    <div className="w-full h-full flex flex-col">
+    <div className="w-full h-full flex flex-col  ">
       <div className="flex-1 overflow-y-auto">
         <div className="flex items-center p-4 border-b border-gray-200">
           <img
