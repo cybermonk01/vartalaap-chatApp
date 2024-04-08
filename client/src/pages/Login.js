@@ -14,7 +14,7 @@ const Login = () => {
 
   const handleDemoLogin = (e) => {
     e.preventDefault();
-    const demoEmail = "userB@chat.com";
+    const demoEmail = "userC@chat.com";
     const demoPassword = "123456";
 
     email.current.value = demoEmail;
