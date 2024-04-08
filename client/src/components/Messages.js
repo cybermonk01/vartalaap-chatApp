@@ -19,7 +19,7 @@ const Messages = ({ message, own }) => {
           />
         )}
         <p
-          className={`bg-gray-200 px-4 py-2 rounded-lg text-gray-800 ${
+          className={`px-4 py-2 rounded-lg text-gray-800 ${
             own
               ? "ml-4 bg-green-600 text-white "
               : "mr-4 bg-blue-700 text-white"
