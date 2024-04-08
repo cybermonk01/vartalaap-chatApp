@@ -28,7 +28,7 @@ const Messages = ({ message, own }) => {
       </div>
       <div
         className={`messageBottom text-xs text-gray-500 ${
-          own ? "text-right" : ""
+          own ? "text-right" : "text-left ml-20"
         }`}
       >
         {messageTime}

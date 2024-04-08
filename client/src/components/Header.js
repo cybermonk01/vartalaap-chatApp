@@ -1,7 +1,9 @@
 import React from "react";
-import { Link, Navigate, NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+  const user = useSelector((store) => store.auth.user);
+
   return (
     <header className="p-4 bg-green-500 dark:bg-green-700">
       <div className="container flex justify-between h-16 mx-auto">
@@ -22,11 +24,19 @@ const Header = () => {
         </div>
 
         <div className="items-center flex-shrink-0 hidden lg:flex">
-          <a href="/login">
-            <button className="px-8 py-3 font-semibold rounded dark:bg-gray-50 dark:text-gray-600">
-              Log in
-            </button>
-          </a>
+          {user ? (
+            <a href="/login">
+              <button className="px-8 py-3 font-semibold rounded dark:bg-gray-50 dark:text-gray-600">
+                Log out
+              </button>
+            </a>
+          ) : (
+            <a href="/login">
+              <button className="px-8 py-3 font-semibold rounded dark:bg-gray-50 dark:text-gray-600">
+                Log in
+              </button>
+            </a>
+          )}
         </div>
 
         <button className="p-4 lg:hidden">

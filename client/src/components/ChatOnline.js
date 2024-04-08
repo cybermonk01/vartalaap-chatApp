@@ -1,6 +1,10 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 const ChatOnline = ({ onlineUsers }) => {
+  console.log("oooooooooooo", onlineUsers);
+  const User = useSelector((store) => store.auth.user);
+
   return (
     <div className="flex flex-col">
       <div className="bg-gray-200 p-4">
@@ -17,10 +21,10 @@ const ChatOnline = ({ onlineUsers }) => {
             <div key={user.userId} className="flex items-center mt-2">
               <div
                 className={`w-3 h-3 rounded-full ${
-                  user.online ? "bg-green-600" : "bg-red-500"
+                  user.online ? "bg-red-500" : "bg-green-600"
                 } mr-2`}
               ></div>
-              <p>{user.userId}</p>
+              <p>{User.name}</p>
             </div>
           ))}
         </div>

@@ -4,6 +4,8 @@ import axiosReq from "../utils/axios";
 const Conversations = ({ conversation, currentUser }) => {
   const [user, setUser] = useState(null);
 
+  console.log(conversation);
+
   useEffect(() => {
     const friendId = conversation.members.find((m) => m !== currentUser._id);
 
@@ -30,7 +32,7 @@ const Conversations = ({ conversation, currentUser }) => {
           />
           <div>
             <p className="font-semibold">{user?.name}</p>
-            <p>Last message here...</p>
+            <p>{}</p>
           </div>
         </div>
       </div>
