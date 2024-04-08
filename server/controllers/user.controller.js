@@ -81,7 +81,7 @@ export const loginUser = asyncHandler(async (req, res) => {
   });
 
   if (!user) {
-    throw new ApiError(400, "User already exists");
+    throw new ApiError(400, "User do not exists");
   }
 
   const passwordMatched = await user.isPasswordCorrect(password);
@@ -161,4 +161,20 @@ export const getAllUsers = asyncHandler(async (req, res) => {
   });
 
   return res.json(new ApiResponse(200, { users }, "all users fetched"));
+});
+
+export const getUserById = asyncHandler(async (req, res) => {
+  const userId = req.query.userId;
+
+  if (!userId) {
+    return res.status(400).json({ error: "userId parameter is required" });
+  }
+
+  const user = await User.findOne({ _id: userId });
+
+  if (!user) {
+    return res.status(404).json({ error: "User not found" });
+  }
+
+  res.json(user);
 });
