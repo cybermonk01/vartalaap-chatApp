@@ -4,24 +4,26 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Login from "./pages/Login";
 import ChatPage from "./pages/ChatPage";
-import ChatProvider from "./Context/ChatProvider";
-import { ChakraProvider } from "@chakra-ui/react";
+import appStore from "./utils/appStore";
+import { Provider } from "react-redux";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
-    <div className="App">
-      <ChatProvider>
-        <ChakraProvider>
-          <Router>
-            <Routes>
+    <Provider store={appStore}>
+      <div className="App">
+        <Header />
+        <Router>
+          <Routes>
+            <Route element={<ProtectedRoute />}>
               <Route path="/" element={<ChatPage />} exact />
-              <Route path="/register" element={<Register />} />
-              <Route path="/login" element={<Login />} />
-            </Routes>
-          </Router>
-        </ChakraProvider>
-      </ChatProvider>
-    </div>
+            </Route>
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+          </Routes>
+        </Router>
+      </div>
+    </Provider>
   );
 }
 

@@ -2,16 +2,19 @@ import React, { useRef } from "react";
 import { toast } from "react-toastify";
 import axiosReq from "../utils/axios";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/authSlice";
 
 const Login = () => {
   const email = useRef();
   const password = useRef();
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
   const handleDemoLogin = (e) => {
     e.preventDefault();
-    const demoEmail = "name@chat.com";
+    const demoEmail = "userB@chat.com";
     const demoPassword = "123456";
 
     email.current.value = demoEmail;
@@ -28,13 +31,20 @@ const Login = () => {
     try {
       const response = await axiosReq.post("/user/login", userData);
 
-      const { token, user } = response.data;
+      const { data } = response;
 
-      localStorage.setItem("token", token);
+      const userInfo = data?.data?.user;
+
+      const accessToken = data?.data?.accessToken;
+
+      dispatch(addUser(userInfo));
+
+      localStorage.setItem("accessToken", accessToken);
+      console.log(accessToken);
 
       toast.success("Login successful!");
 
-      navigate("/dashboard");
+      navigate("/");
     } catch (error) {
       console.error("Error logging in:", error);
       toast.error("Error logging in. Please check your credentials.");
@@ -126,7 +136,8 @@ const Login = () => {
                   href="#"
                   className="text-sm text-blue-500 hover:underline dark:text-blue-400"
                 >
-                  Don’t have an account yet? Sign up
+                  Don’t have an account yet?
+                  <a href="/register">Sign up</a>
                 </a>
               </div>
             </div>
