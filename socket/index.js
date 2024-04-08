@@ -1,4 +1,5 @@
 const io = require("socket.io")(8900, {
+  pingTimeout: 120000,
   cors: {
     origin: "http://localhost:3000",
   },
