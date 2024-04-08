@@ -54,6 +54,8 @@ Start the Client
   npm start
 ```
 
+Conversation Routes
+
 ```bash
 
    // send conversation
@@ -63,6 +65,8 @@ Start the Client
   "GET /api/v1/conversations/:conversationId": "getConversation",
 
 ```
+
+Message Routes
 
 ```bash
 
